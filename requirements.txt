@@ -1,3 +1,5 @@
-translate
+Pillow==9.4.0
+pytube==12.1.2
+requests==2.28.2
 selenium==4.8.2
-pillow
+translate==3.6.1
