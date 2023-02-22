@@ -24,7 +24,7 @@ def resize_image(image_path):
     image = Image.open(image_path)
 
     # 将图片调整为720*1280大小
-    resized_image = image.resize((1080,1920))
+    resized_image = image.resize((720, 1280))
 
     # 保存调整后的图片
     resized_image.save(image_path)
