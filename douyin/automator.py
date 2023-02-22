@@ -5,6 +5,7 @@ import time
 from translate import Translator
 from pytube import YouTube, Playlist
 from .utils import download_image, resize_image
+import random
 
 class Automator:
     def __init__(self):
@@ -31,7 +32,9 @@ class Automator:
 
         yone = 'https://www.youtube.com/playlist?list=PL-TM5XNBRKzT2MjKkUCrGa0qnQMYFOGpf'
         playlist2 = Playlist(yone)
-        return playlist.video_urls[:10] + playlist2.video_urls[:10]
+        ret = list(playlist2.video_urls[:10] + playlist.video_urls[:10])
+        random.shuffle(ret)
+        return ret
 
     @classmethod
     def rmrf(cls,path):

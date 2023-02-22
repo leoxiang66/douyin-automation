@@ -23,11 +23,9 @@ def resize_image(image_path):
     # 打开原始图片
     image = Image.open(image_path)
 
-    # 将图片调整为720*1280大小
-    resized_image = image.resize((720, 1280))
+
+    resized_image = image.resize((1920,1080))
 
     # 保存调整后的图片
     resized_image.save(image_path)
 
-if __name__ == '__main__':
-    resize_image("C:\git\leoxiang66\douyin-automation\downloades\cover.jpg")
