@@ -87,6 +87,7 @@ class Automator:
             self.driver.find_element('xpath', '//*[text()="完成"]').click()
         except Exception as e:
             print(e)
+            self.login()
 
     def publish_video(self,filepath:str, title:str):
         title = '''【完整录像】''' + title
@@ -131,8 +132,14 @@ class Automator:
         # self.driver.find_element('xpath', '//*[@class="radio--4Gpx6"][contains(@style,"background-color: rgb(248, 249, 249))"]').click()
 
         # # 点击发布
-        fabu = self.driver.find_element('xpath', '//*[text()="发布"]')
-        self.driver.execute_script("arguments[0].click();", fabu)
+        def publish_():
+            try:
+                fabu = self.driver.find_element('xpath', '//*[text()="发布"]')
+                self.driver.execute_script("arguments[0].click();", fabu)
+            except:
+                publish_()
+
+        publish_()
 
 
 
