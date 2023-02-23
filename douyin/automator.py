@@ -2,7 +2,6 @@ import selenium
 from selenium import webdriver
 from pathlib import Path
 import time
-from translate import Translator
 from pytube import YouTube, Playlist
 from .utils import download_image, resize_image
 import random
@@ -15,24 +14,23 @@ class Automator:
         self.download_dir = Path('downloades')
         self.download_dir.mkdir(parents=True, exist_ok=True)
         self.clear_cache()
-        self.__translator__ = Translator(to_lang='zh')
 
 
 
     def work(self):
         self.login()
-        urls =  self.top10recent()
+        urls =  self.top5recent()
         for i in urls:
             title = self.download_yt(i)
             self.publish_video(self.download_dir.joinpath('download.mp4').absolute().__str__(),title)
 
-    def top10recent(self):
+    def top5recent(self):
         yasuo = "https://www.youtube.com/playlist?list=PL-TM5XNBRKzQ4HYxwCTNCh4dqjblLcVn3"
         playlist = Playlist(yasuo)
 
         yone = 'https://www.youtube.com/playlist?list=PL-TM5XNBRKzT2MjKkUCrGa0qnQMYFOGpf'
         playlist2 = Playlist(yone)
-        ret = list(playlist2.video_urls[:10] + playlist.video_urls[:10])
+        ret = list(playlist2.video_urls[:5] + playlist.video_urls[:5])
         random.shuffle(ret)
         return ret
 
@@ -50,8 +48,7 @@ class Automator:
     def clear_cache(self):
         self.rmrf(self.download_dir.__str__())
 
-    def translate(self,text):
-        return self.__translator__.translate(text)
+
 
 
 
@@ -92,7 +89,7 @@ class Automator:
             print(e)
 
     def publish_video(self,filepath:str, title:str):
-        title = '''【完整录像】''' + self.translate(title)
+        title = '''【完整录像】''' + title
         time.sleep(2)
         self.driver.find_element('xpath', '//*[text()="发布作品"]').click()
         time.sleep(2)
