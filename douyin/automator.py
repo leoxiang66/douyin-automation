@@ -118,7 +118,7 @@ class Automator:
                     f"{title}")
             except:
                 settitle()
-                
+
         settitle()
 
         # 添加封面
