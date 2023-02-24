@@ -110,10 +110,16 @@ class Automator:
         print("视频已上传完成！")
 
         # 设置title
-        self.driver.find_element('xpath', '//*[@class="editor-kit-editor-container"]').click()
-        self.driver.find_element('xpath',
-                                 '//*[@class="zone-container editor-kit-container editor editor-comp-publish notranslate chrome window chrome88"]').send_keys(
-            f"{title}")
+        def settitle():
+            try:
+                self.driver.find_element('xpath', '//*[@class="editor-kit-editor-container"]').click()
+                self.driver.find_element('xpath',
+                                         '//*[@class="zone-container editor-kit-container editor editor-comp-publish notranslate chrome window chrome88"]').send_keys(
+                    f"{title}")
+            except:
+                settitle()
+                
+        settitle()
 
         # 添加封面
         self.driver.find_element('xpath','//*[text()="编辑封面"]').click()
