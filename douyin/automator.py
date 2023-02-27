@@ -122,16 +122,16 @@ class Automator:
         settitle()
 
         # 添加封面
-        self.driver.find_element('xpath','//*[text()="编辑封面"]').click()
-        time.sleep(2)
-        self.driver.find_element('xpath','//div[text()="上传封面"]').click()
-        time.sleep(2)
-        self.driver.find_element('xpath','//input[@type="file"]').send_keys(self.download_dir.joinpath('cover.jpg').absolute().__str__())
-        time.sleep(3)
-        self.driver.find_element('xpath','//*[text()="裁剪封面"]/..//*[text()="确定"]').click()
-        time.sleep(3)
-        self.driver.find_element('xpath','//*[text()="设置封面"]/..//*[contains(@class,"upload")]//*[text()="确定"]').click()
-        time.sleep(10)
+        # self.driver.find_element('xpath','//*[text()="编辑封面"]').click()
+        # time.sleep(2)
+        # self.driver.find_element('xpath','//div[text()="上传封面"]').click()
+        # time.sleep(2)
+        # self.driver.find_element('xpath','//input[@type="file"]').send_keys(self.download_dir.joinpath('cover.jpg').absolute().__str__())
+        # time.sleep(3)
+        # self.driver.find_element('xpath','//*[text()="裁剪封面"]/..//*[text()="确定"]').click()
+        # time.sleep(3)
+        # self.driver.find_element('xpath','//*[text()="设置封面"]/..//*[contains(@class,"upload")]//*[text()="确定"]').click()
+        # time.sleep(10)
 
 
 
