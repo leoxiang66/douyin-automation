@@ -116,6 +116,7 @@ class Automator:
                 self.driver.find_element('xpath',
                                          '//*[@class="zone-container editor-kit-container editor editor-comp-publish notranslate chrome window chrome88"]').send_keys(
                     f"{title}")
+                time.sleep(3)
             except:
                 settitle()
 
